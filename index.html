@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Planos Wilson Souza</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300..800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+/* Layout: editorial columns separated by hairlines, price as the loudest element, same dark/gold language as the personal site. */
+:root{
+  --bg:#0c0b0a;
+  --ink:#f2ece3;
+  --ink-dim:#a39b8d;
+  --ink-faint:#6f6859;
+  --accent:#c9a468;
+  --line:rgba(242,236,227,0.12);
+  --line-strong:rgba(242,236,227,0.22);
+  --btn-bg:#f2ece3;
+  --btn-ink:#0c0b0a;
+  --p1:#8fb3a4;
+  --p2:#c9a468;
+  --p3:#dc8f66;
+  --display:'Bricolage Grotesque','Helvetica Neue',Arial,sans-serif;
+  --sans:'Inter','Helvetica Neue',Arial,sans-serif;
+  color-scheme:dark;
+}
+@media (prefers-color-scheme: light){
+  :root:not([data-theme="dark"]){
+    --bg:#f6f3ee; --ink:#17140f; --ink-dim:#5c5548; --ink-faint:#7a7262; --accent:#86601c;
+    --line:rgba(23,20,15,0.14); --line-strong:rgba(23,20,15,0.26);
+    --btn-bg:#17140f; --btn-ink:#f6f3ee; color-scheme:light;
+    --p1:#3d6b5b; --p2:#86601c; --p3:#a4502a;
+  }
+}
+:root[data-theme="light"]{
+  --bg:#f6f3ee; --ink:#17140f; --ink-dim:#5c5548; --ink-faint:#7a7262; --accent:#86601c;
+  --line:rgba(23,20,15,0.14); --line-strong:rgba(23,20,15,0.26);
+  --btn-bg:#17140f; --btn-ink:#f6f3ee; color-scheme:light;
+  --p1:#3d6b5b; --p2:#86601c; --p3:#a4502a;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{
+  background:var(--bg);color:var(--ink);font-family:var(--sans);
+  -webkit-font-smoothing:antialiased;line-height:1.5;
+  padding-left:max(16px,env(safe-area-inset-left,0px));
+  padding-right:max(16px,env(safe-area-inset-right,0px));
+  padding-block:0;
+}
+a{color:inherit;text-decoration:none}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+.wrap{max-width:1240px;margin:0 auto}
+.label{font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;font-weight:600;color:var(--ink-dim)}
+.label::before{content:'';display:inline-block;width:20px;height:3px;background:var(--accent);margin-right:12px;vertical-align:middle;border-radius:2px}
+
+header{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-block:24px;border-bottom:1px solid var(--line)}
+.logo{font-family:var(--display);font-weight:600;font-size:16.5px;letter-spacing:.02em}
+.back{font-size:12.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-dim);font-weight:500}
+.back:hover{color:var(--ink)}
+
+.intro{padding-block:72px 48px;display:flex;flex-direction:column;gap:22px}
+h1{font-family:var(--display);font-weight:600;font-size:clamp(40px,6.4vw,92px);line-height:1.02;letter-spacing:-.015em;max-width:16ch;text-wrap:balance}
+h1 em{font-style:normal;color:var(--accent)}
+.intro p{color:var(--ink-dim);font-size:17px;max-width:52ch;line-height:1.6}
+
+.switch-row{display:flex;align-items:center;gap:20px;flex-wrap:wrap;padding-block:20px;border-top:1px solid var(--line)}
+.switch{display:inline-flex;border:1px solid var(--line-strong);border-radius:999px;padding:4px}
+.switch button{
+  font:600 12.5px/1 var(--sans);letter-spacing:.06em;text-transform:uppercase;
+  background:transparent;color:var(--ink-dim);border:0;border-radius:999px;padding:12px 20px;cursor:pointer;
+  transition:background .3s ease,color .3s ease;
+}
+.switch button[aria-pressed="true"]{background:var(--btn-bg);color:var(--btn-ink)}
+.switch button:not([aria-pressed="true"]):hover{color:var(--ink)}
+#mode-note{font-size:13.5px;color:var(--ink-faint)}
+
+.plans{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border-top:1px solid var(--line-strong)}
+.plan.p1{--pc:var(--p1)}
+.plan.p2{--pc:var(--p2)}
+.plan.p3{--pc:var(--p3)}
+.plan{padding:44px 36px 56px;display:flex;flex-direction:column;gap:30px;min-width:0}
+.plan+.plan{border-left:1px solid var(--line)}
+.plan:first-child{padding-left:0}
+.plan:last-child{padding-right:0}
+.plan-head{display:flex;flex-direction:column;gap:12px}
+.plan-head::before{content:'';display:block;width:34px;height:3px;border-radius:2px;background:var(--pc)}
+.plan-tag{font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;font-weight:600;color:var(--pc)}
+.plan-line{font-family:var(--display);font-weight:500;font-size:clamp(19px,1.7vw,23px);line-height:1.2;letter-spacing:-.005em;color:var(--ink);text-wrap:balance}
+.plan-name{font-family:var(--display);font-weight:600;font-size:clamp(30px,3vw,42px);letter-spacing:-.01em;line-height:1.05}
+.plan-for{font-size:14.5px;color:var(--ink-dim);min-height:4.4em}
+.price{display:flex;align-items:baseline;gap:8px;flex-wrap:wrap;padding-block:22px;border-block:1px solid var(--line)}
+.price .cur{font-size:15px;color:var(--ink-dim);font-weight:500}
+.price .val{font-family:var(--display);font-weight:600;font-size:clamp(44px,4.4vw,62px);line-height:1;letter-spacing:-.02em;color:var(--pc);font-variant-numeric:tabular-nums}
+.price .per{font-size:14px;color:var(--ink-faint)}
+.inherit{font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;font-weight:600;color:var(--pc)}
+ul.items{list-style:none;display:flex;flex-direction:column}
+ul.items li{
+  position:relative;padding:13px 0 13px 20px;border-top:1px solid var(--line);
+  font-size:15px;line-height:1.45;color:var(--ink);
+}
+ul.items li:last-child{border-bottom:1px solid var(--line)}
+ul.items li::before{content:'';position:absolute;left:0;top:23px;width:8px;height:1px;background:var(--pc)}
+ul.items li small{display:block;font-size:12.5px;color:var(--ink-faint);margin-top:2px}
+.plan-cta{margin-top:auto;padding-top:6px}
+.btn{
+  display:inline-flex;align-items:center;gap:10px;background:var(--btn-bg);color:var(--btn-ink);
+  font-weight:600;font-size:13.5px;letter-spacing:.02em;padding:15px 26px;border-radius:999px;
+  transition:transform .35s cubic-bezier(.16,.8,.28,1),opacity .3s ease;
+}
+.btn:hover{transform:translateY(-2px);opacity:.9}
+.btn.ghost{background:transparent;color:var(--ink);border:1px solid var(--line-strong)}
+
+.foot-cta{padding-block:96px;border-top:1px solid var(--line-strong);display:flex;flex-direction:column;gap:26px}
+.foot-cta h2{font-family:var(--display);font-weight:600;font-size:clamp(28px,4vw,52px);line-height:1.12;letter-spacing:-.01em;max-width:20ch;text-wrap:balance}
+.foot-cta p{color:var(--ink-dim);max-width:46ch}
+
+.safe{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:56px;padding-block:80px 88px;border-top:1px solid var(--line-strong)}
+.safe-head{display:flex;flex-direction:column;gap:20px}
+.safe-head h2{font-family:var(--display);font-weight:600;font-size:clamp(28px,3.4vw,46px);line-height:1.1;letter-spacing:-.01em;text-wrap:balance;max-width:14ch}
+.safe-head p{color:var(--ink-dim);max-width:36ch;font-size:15.5px;line-height:1.6}
+.safe-list{list-style:none;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));column-gap:36px}
+.safe-list li{padding:20px 0;border-top:1px solid var(--line);display:flex;flex-direction:column;gap:6px;min-width:0}
+.safe-list li:nth-last-child(-n+2){border-bottom:1px solid var(--line)}
+.safe-list b{font-family:var(--display);font-weight:600;font-size:18px;line-height:1.25;letter-spacing:-.005em}
+.safe-list span{font-size:14px;color:var(--ink-dim);line-height:1.5}
+
+.proof{padding-block:36px 40px;display:grid;grid-template-columns:minmax(0,4fr) minmax(0,8fr);gap:48px;border-bottom:1px solid var(--line)}
+.proof-id{display:flex;flex-direction:column;gap:10px}
+.proof-id b{font-family:var(--display);font-weight:600;font-size:22px;letter-spacing:-.005em;line-height:1.15}
+.proof-id span{font-size:14px;color:var(--ink-dim);line-height:1.55;max-width:34ch}
+.proof-right{display:flex;flex-direction:column;gap:28px;min-width:0}
+.stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:20px}
+.stat{display:flex;flex-direction:column;gap:6px;min-width:0}
+.stat .n{font-family:var(--display);font-weight:600;font-size:clamp(30px,3.4vw,46px);line-height:1;letter-spacing:-.02em;color:var(--accent);font-variant-numeric:tabular-nums}
+.stat .t{font-size:12.5px;color:var(--ink-dim);line-height:1.4;max-width:20ch}
+.brands{display:flex;flex-wrap:wrap;align-items:center;gap:10px 28px;padding-top:22px;border-top:1px solid var(--line)}
+.brands .bl{font-size:11px;letter-spacing:.16em;text-transform:uppercase;font-weight:600;color:var(--ink-faint);width:100%}
+.brands span.b{font-family:var(--display);font-weight:600;font-size:17px;letter-spacing:-.005em;color:var(--ink)}
+footer{padding-block:32px 40px;border-top:1px solid var(--line);display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;color:var(--ink-faint);font-size:12.5px}
+
+@media (max-width:980px){
+  .plans{grid-template-columns:1fr}
+  .plan,.plan:first-child,.plan:last-child{padding:36px 0 40px}
+  .plan+.plan{border-left:0;border-top:1px solid var(--line-strong)}
+  .plan-for{min-height:0}
+  .intro{padding-block:56px 40px}
+  .proof{grid-template-columns:1fr;gap:28px}
+  .stats{grid-template-columns:repeat(2,minmax(0,1fr));gap:24px 20px}
+  .safe{grid-template-columns:1fr;gap:32px;padding-block:56px 64px}
+  .safe-list{grid-template-columns:1fr}
+  .safe-list li:nth-last-child(-n+2){border-bottom:0}
+  .safe-list li:last-child{border-bottom:1px solid var(--line)}
+  .foot-cta{padding-block:64px}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <a href="#topo" class="logo">Wilson Souza</a>
+    <span class="back">Planos e valores</span>
+  </header>
+
+  <section class="proof" aria-label="Resumo profissional">
+    <div class="proof-id">
+      <b>Wilson Souza</b>
+      <span>Estrategista de marketing (USP) e cofundador da We Strategy. Atendo Brasil, Estados Unidos, Espanha e Portugal.</span>
+    </div>
+    <div class="proof-right">
+      <div class="stats">
+        <div class="stat"><span class="n">+R$5M</span><span class="t">em vendas geradas com anúncios para eventos</span></div>
+        <div class="stat"><span class="n">100+</span><span class="t">projetos atendidos</span></div>
+        <div class="stat"><span class="n">Top 50</span><span class="t">no maior campeonato de tráfego pago do país</span></div>
+        <div class="stat"><span class="n">4</span><span class="t">países atendidos</span></div>
+      </div>
+      <div class="brands">
+        <span class="bl">Já atuei com</span>
+        <span class="b">POPline</span><span class="b">Apple Music</span><span class="b">Sollares Festival</span><span class="b">WL Veículos</span><span class="b">PODmarket</span><span class="b">BRABO</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="intro" id="topo">
+    <div class="label">Formatos de atuação</div>
+    <h1>Escolha o plano <em>ideal</em> para o seu negócio.</h1>
+    <p>Cada plano acrescenta uma camada ao anterior. Comece pela validação e evolua conforme o negócio pede: mais estrutura, mais conversão, mais automação.</p>
+  </section>
+
+  <div class="switch-row">
+    <div class="switch" role="group" aria-label="Tabela de valores">
+      <button type="button" id="m-std" aria-pressed="true">Valor padrão</button>
+      <button type="button" id="m-par" aria-pressed="false">Parceiros e indicações</button>
+    </div>
+    <span id="mode-note">Valores mensais.</span>
+  </div>
+
+  <section class="plans" aria-label="Planos">
+    <article class="plan p1">
+      <div class="plan-head">
+        <div class="plan-tag">Validação</div>
+        <div class="plan-name">Performance</div>
+        <div class="plan-line">Comece com clareza.</div>
+        <p class="plan-for">Ideal para o início e a validação da operação.</p>
+      </div>
+      <div class="price">
+        <span class="cur">R$</span>
+        <span class="val" data-std="3.000" data-par="1.700">3.000</span>
+        <span class="per">/mês</span>
+      </div>
+      <ul class="items">
+        <li>Gestão de tráfego pago</li>
+        <li>Configuração e implementação da conta</li>
+        <li>Funil básico de aquisição</li>
+        <li>Otimização diária das campanhas</li>
+        <li>Rastreamento avançado</li>
+        <li>Time com 2 profissionais</li>
+        <li>Reunião de acompanhamento semanal</li>
+        <li>Reunião estratégica mensal</li>
+        <li>Acompanhamento de marketing e estratégia</li>
+      </ul>
+    </article>
+
+    <article class="plan p2">
+      <div class="plan-head">
+        <div class="plan-tag">Conversão</div>
+        <div class="plan-name">Strategy</div>
+        <div class="plan-line">Converta com direção.</div>
+        <p class="plan-for">Para quem já valida e quer converter mais, com apoio criativo.</p>
+      </div>
+      <div class="price">
+        <span class="cur">R$</span>
+        <span class="val" data-std="4.000" data-par="2.000">4.000</span>
+        <span class="per">/mês</span>
+      </div>
+      <div class="inherit">Tudo do Performance, mais:</div>
+      <ul class="items">
+        <li>Suporte de designer</li>
+        <li>Landing page<small>1 por mês</small></li>
+      </ul>
+    </article>
+
+    <article class="plan p3">
+      <div class="plan-head">
+        <div class="plan-tag">Escala</div>
+        <div class="plan-name">Advanced</div>
+        <div class="plan-line">Opere em escala.</div>
+        <p class="plan-for">Operação completa: aquisição, relacionamento e automação.</p>
+      </div>
+      <div class="price">
+        <span class="cur">R$</span>
+        <span class="val" data-std="5.000" data-par="4.000">5.000</span>
+        <span class="per">/mês</span>
+      </div>
+      <div class="inherit">Tudo do Strategy, mais:</div>
+      <ul class="items">
+        <li>Implementação de CRM</li>
+        <li>Automações</li>
+        <li>Gestão de e-mail marketing</li>
+        <li>Suporte de designer avançado para redes sociais</li>
+      </ul>
+    </article>
+  </section>
+
+  <section class="safe" aria-labelledby="seg">
+    <div class="safe-head">
+      <div class="label">Segurança</div>
+      <h2 id="seg">Segurança para o seu investimento.</h2>
+      <p>Regras claras desde o primeiro dia, para você decidir com tranquilidade.</p>
+    </div>
+    <ul class="safe-list">
+      <li><b>Contrato de validação de 3 meses</b><span>Tempo suficiente para validar a estratégia com dados.</span></li>
+      <li><b>Ajustes guiados por resultados</b><span>As mudanças seguem o desempenho, não o calendário.</span></li>
+      <li><b>Acompanhamento semanal e mensal</b><span>Métricas e direção estratégica revisadas com você.</span></li>
+      <li><b>Time certificado</b><span>Profissionais com certificações em tráfego e marketing.</span></li>
+      <li><b>Suporte oficial do Meta Ads</b><span>Canal direto com a plataforma quando necessário.</span></li>
+      <li><b>Dentro das políticas das plataformas</b><span>Atuação alinhada às regras de publicidade de cada canal.</span></li>
+    </ul>
+  </section>
+
+  <footer>
+    <span>Wilson Souza</span>
+    <span>© 2026 Wilson Souza. Todos os direitos reservados.</span>
+  </footer>
+</div>
+
+<script>
+(function(){
+  var std=document.getElementById('m-std'), par=document.getElementById('m-par');
+  var note=document.getElementById('mode-note');
+  var vals=document.querySelectorAll('.val');
+  function setMode(m){
+    var isPar = m==='par';
+    std.setAttribute('aria-pressed', String(!isPar));
+    par.setAttribute('aria-pressed', String(isPar));
+    vals.forEach(function(v){ v.textContent = v.getAttribute(isPar?'data-par':'data-std'); });
+    note.textContent = isPar ? 'Condição para parceiros e indicações. Valores mensais.' : 'Valores mensais.';
+  }
+  std.addEventListener('click', function(){ setMode('std'); });
+  par.addEventListener('click', function(){ setMode('par'); });
+})();
+</script>
+</body>
+</html>
